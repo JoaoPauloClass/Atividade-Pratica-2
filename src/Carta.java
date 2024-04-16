@@ -1,18 +1,27 @@
 public class Carta {
 
+    private String tipo;
     private String nome;
     private int custoMana;
     private String raridade;
     private String efeitos; // ? uma lista talvez (ou uma lista de objetos)
-    // ! atributo tipo fica redundante por ser uma superclasse
     
     public Carta() {}
 
-    public Carta(String nome, int custoMana, String raridade, String efeitos) {
+    public Carta(String tipo, String nome, int custoMana, String raridade, String efeitos) {
+        this.tipo = tipo;
         this.nome = nome;
         this.custoMana = custoMana;
         this.raridade = raridade;
         this.efeitos = efeitos;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getNome() {
