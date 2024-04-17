@@ -129,4 +129,22 @@ public class ListaCartas {
     // }
 
 
+    public static boolean excluirCarta(String nome){
+        for (Carta carta : listaCartas) {
+            if (carta.getNome() == nome) {
+                listaCartas.remove(carta);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static void excluirTodasCartas(){
+        listaCartas.removeAll(listaCartas);
+        // for (Carta carta : listaCartas) {
+        // }
+    }
+
+
 }

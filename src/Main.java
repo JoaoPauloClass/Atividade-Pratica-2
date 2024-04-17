@@ -76,7 +76,7 @@ public class Main {
         // ListaCartas.editarCustoManaCarta("Bola de Fogo", 999);
         // ListaCartas.editarRaridadeCarta("Bola de Fogo", "Lendário");
         
-        // ListaCartas.excluirCarta("Bola de fogo");
+        // ListaCartas.excluirTodasCartas();
 
         for (Carta carta : ListaCartas.getListaCartas()) {
             System.out.println(carta.toString());
