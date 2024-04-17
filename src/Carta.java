@@ -4,7 +4,7 @@ public class Carta {
     private String nome;
     private int custoMana;
     private String raridade;
-    private String efeitos; // ? uma lista talvez (ou uma lista de objetos)
+ 
     
     public Carta() {}
 
@@ -13,7 +13,6 @@ public class Carta {
         this.nome = nome;
         this.custoMana = custoMana;
         this.raridade = raridade;
-        this.efeitos = efeitos;
     }
 
     public String getTipo() {
@@ -48,17 +47,9 @@ public class Carta {
         this.raridade = raridade;
     }
 
-    public String getEfeitos() {
-        return efeitos;
-    }
-
-    public void setEfeitos(String efeitos) {
-        this.efeitos = efeitos;
-    }
-    
     @Override
     public String toString() {
-        String txt = "\nNome: " + nome + "\nCusto de mana: " + custoMana + "\nRaridade: " + raridade;
+        String txt = "\nTipo: " + tipo +"\nNome: " + nome + "\nCusto de mana: " + custoMana + "\nRaridade: " + raridade;
         return txt;
     }
 }

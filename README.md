@@ -1,8 +1,8 @@
 ## Ideia
-Superclasse Carta -> nome, custo de mana, raridade, efeitos, tipo
+Superclasse Carta -> tipo, nome, custo de mana, raridade
 
-Dessa classe carta ->Artefato, criatura e feitiço
+Dessa classe carta -> Artefato, criatura e feitiço
 
 Criatura -> pontos de vida, poder/ataque, defesa, habilidades
-Feitiço -> Elemento, efeitos adicionais
-Artefato -> Habilidades ativas, durabilidade
+Feitiço -> Elemento, efeito adicional
+Artefato -> Tipo, bonus, habilidade ativa, durabilidade
