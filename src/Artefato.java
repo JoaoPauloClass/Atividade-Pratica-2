@@ -47,7 +47,7 @@ public class Artefato extends Carta{
 
     @Override
     public String toString() {
-        String txt = super.toString() + "\nTipo artefato: " + tipoArtefato + "\nBonus" + bonus + "\nHabilidade ativa: " + habilidadeAtiva + "\nDurabilidade: " + durabilidade;
+        String txt = super.toString() + "\nTipo artefato: " + tipoArtefato + "\nBonus: " + bonus + "\nHabilidade ativa: " + habilidadeAtiva + "\nDurabilidade: " + durabilidade;
         return txt;
     }
 }

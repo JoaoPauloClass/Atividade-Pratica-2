@@ -55,7 +55,7 @@ public class Criatura extends Carta{
 
     @Override
     public String toString() {
-        String txt = super.toString() + "\nPontos de vida: " + pontosVida + "\nAtaque" + ataque + "\nDefesa: " + defesa + "\nHabilidades: ";
+        String txt = super.toString() + "\nPontos de vida: " + pontosVida + "\nAtaque: " + ataque + "\nDefesa: " + defesa + "\nHabilidades: ";
 
         for (String habilidade : habilidades) {
             txt += "\n  " + habilidade; 

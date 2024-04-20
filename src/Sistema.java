@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.locks.AbstractQueuedLongSynchronizer.ConditionObject;
+
+
 public class Sistema {
 
     public static void executar() {
@@ -58,7 +63,7 @@ public class Sistema {
             System.out.println("2) Feitiço");
             System.out.println("3) Artefato");
             System.out.println("0) Cancelar");
-            System.out.println(">> ");
+            System.out.print(">> ");
             op = Console.lerInt();
 
             switch (op) {
@@ -71,6 +76,11 @@ public class Sistema {
                 case 3:
                     cadastrarArtefato();
                     break;
+
+                case 4:
+                    injetarCartas();
+                    System.out.println("Cartas injetadas...");
+                    break;    
                 case 0:
                     System.out.println("Cancelando operação.");
                     break;
@@ -78,12 +88,54 @@ public class Sistema {
                     System.out.println("Opção inválida, tente novamente");
                     break;
             }
-            if (op >= 1 && op <= 3) {
+            if (op >= 1 && op <= 4) {//***************************ARRUMAR pra 3 */
                 break;
             }
         } while(op != 0);
     }
     
+    public static void injetarCartas(){
+        // Exemplos de criação de objetos usando o construtor de Artefato
+        Carta artefato1 = new Artefato("Artefato", "Amuleto do Poder", 3, "Raro", "Equipa um item a criatura", "Colar", 2, "Nenhum", 5);
+        Carta artefato2 = new Artefato("Artefato", "Espada do Destino", 5, "Épico", "Equipa um item a criatura", "Espada", 5 , "Causa dano adicional", 10);
+        Carta artefato3 = new Artefato("Artefato", "Anel da Proteção", 2, "Comum", "Equipa um item a criatura", "Anel", 3 , "Nenhum", 3);
+        Carta artefato4 = new Artefato("Artefato", "Cajado Arcano", 4, "Raro", "Equipa um item a criatura", "Cajado", 4, "Conjura feitiços gratuitamente", 8);
+        Carta artefato5 = new Artefato("Artefato", "Elmo do Guardião", 3, "Comum", "Equipa um item a criatura", "Elmo", 2, "Nenhum", 4);
+
+        // Exemplos de criação de objetos usando o construtor de Feitiço
+        Carta feitico1 = new Feitico("Feitiço", "Bola de Fogo", 4, "Raro", "Conjura um feitiço", "Fogo", "Causa 8 de dano");
+        Carta feitico2 = new Feitico("Feitiço", "Escudo de Proteção", 3, "Comum", "Conjura um feitiço", "Defesa", "Aumenta a defesa em 5");
+        Carta feitico3 = new Feitico("Feitiço", "Chuva de Flechas", 5, "Épico", "Conjura um feitiço", "Flecha", "Causa 12 de dano");
+        Carta feitico4 = new Feitico("Feitiço", "Curar Ferimentos", 2, "Comum", "Conjura um feitiço", "Cura", "Recupera 10 pontos de vida");
+        Carta feitico5 = new Feitico("Feitiço", "Encantar Arma", 4, "Raro", "Conjura um feitiço", "Encantamento", "Aumenta o ataque em 3");
+
+        // Exemplos de criação de objetos usando o construtor de Criatura
+        Criatura criatura1 = new Criatura("Criatura", "Dragão Flamejante", 7, "Lendário", "Invoca uma criatura para a batalha", 30, 12, 8);
+        Criatura criatura2 = new Criatura("Criatura", "Guerreiro Orc", 4, "Raro", "Invoca uma criatura para a batalha", 20, 8, 6);
+        Criatura criatura3 = new Criatura("Criatura", "Elfo Arqueiro", 3, "Comum", "Invoca uma criatura para a batalha", 15, 6, 4);
+        Criatura criatura4 = new Criatura("Criatura", "Gigante de Pedra", 6, "Épico", "Invoca uma criatura para a batalha", 25, 10, 10);
+        Criatura criatura5 = new Criatura("Criatura", "Mago Elemental", 5, "Raro", "Invoca uma criatura para a batalha", 18, 7, 5);
+
+        ListaCartas.adicionarCarta(artefato5);
+        ListaCartas.adicionarCarta(artefato4);
+        ListaCartas.adicionarCarta(artefato3);
+        ListaCartas.adicionarCarta(artefato2);
+        ListaCartas.adicionarCarta(artefato1);
+
+        ListaCartas.adicionarCarta(feitico1);
+        ListaCartas.adicionarCarta(feitico2);
+        ListaCartas.adicionarCarta(feitico3);
+        ListaCartas.adicionarCarta(feitico4);
+        ListaCartas.adicionarCarta(feitico5);
+
+        ListaCartas.adicionarCarta(criatura1);
+        ListaCartas.adicionarCarta(criatura2);
+        ListaCartas.adicionarCarta(criatura3);
+        ListaCartas.adicionarCarta(criatura4);
+        ListaCartas.adicionarCarta(criatura5);
+
+    } 
+
     private static void cadastrarCriatura() {
         String nome;
         int custoMana;
@@ -181,12 +233,163 @@ public class Sistema {
     }
 
     private static void buscarCarta() {
-        // TODO buscar carta
+        int op;
+        do {
+            System.out.println("\n\nBUSCAR CARTA");
+            System.out.println("Selecione o tipo de busca que deseja realizar:");
+            System.out.println("1) Por nome");
+            System.out.println("2) Por Custo de mana");
+            System.out.println("3) Por Raridade");
+            System.out.println("0) Sair");
+            System.out.print(">> ");
+            op = Console.lerInt();
+
+            switch (op) {
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+
+                case 1:
+                    buscarCartaPorNome();
+                    break;
+
+                case 2:
+                    buscarCartaPorCustoDeMana();
+                    break;
+
+                case 3:
+                    buscarCartaPorRaridade();
+                    break;
+            
+                default:
+                    System.out.println("Valor inválido, digite novamente");
+                    break;
+                }
+
+        } while (op != 0);
+    }
         
+    private static void buscarCartaPorNome() {
+        String nome;
+        Carta tempCarta = new Carta();
+        System.out.println("BUSCAR CARTA POR NOME");
+        System.out.print("Nome da carta: ");
+        nome = Console.lerString();
+        tempCarta = ListaCartas.buscarNomeCarta(nome);
+
+        if (tempCarta == null) {
+            System.out.println("\nCarta não encontrada.");
+        } else {
+            System.out.println("Carta encontrada!");
+            System.out.println(tempCarta.toString());
+        }
+    }
+
+    private static void buscarCartaPorCustoDeMana() {
+        int custo;
+        List<Carta> tempList = new ArrayList<>();
+        System.out.println("BUSCAR CARTAS POR CUSTO DE MANA");
+        System.out.print("Custo de mana da carta: ");
+        custo = Console.lerInt();
+        tempList = ListaCartas.buscarCustoManaCarta(custo);
+
+        if (tempList.size() == 0) {
+            System.out.println("\nCartas não encontradas.");
+        } else {
+            System.out.println("Cartas encontradas!\n");
+            for (Carta carta : tempList) {
+                System.out.println(carta.toString());
+            }
+        }
+    }
+
+    private static void buscarCartaPorRaridade() {
+        String raridade;
+        List<Carta> tempList = new ArrayList<>();
+        System.out.println("BUSCAR CARTAS POR RARIDADE");
+        System.out.print("Raridade da carta: ");
+        raridade = Console.lerString();
+        tempList = ListaCartas.buscarRaridadeCarta(raridade);
+
+        if (tempList.size() == 0) {
+            System.out.println("\nCartas não encontradas.");
+        } else {
+            System.out.println("Cartas encontradas!\n");
+            for (Carta carta : tempList) {
+                System.out.println(carta.toString());
+            }
+        }
     }
 
     private static void editarCarta() {
-        // TODO editar carta
+        String nome;
+        int op;
+        do {
+            System.out.println("\n\nEDITAR CARTA");
+            System.out.print("Digite o nome da carta que deseja editar (digite SAIR para sair): ");
+            nome = Console.lerString();
+
+            if (ListaCartas.buscarNomeCarta(nome) == null) {
+                System.out.println("Carta não encontrada.");
+                if (nome.equals("SAIR")) {
+                    break;
+                }
+            }
+
+        } while (ListaCartas.buscarNomeCarta(nome) == null);
+
+        if (!nome.equals("SAIR")) {
+            System.out.println("\nEDITAR CARTA -> " + nome);
+            System.out.println("1) Editar nome");
+            System.out.println("2) Editar Custo de mana");
+            System.out.println("3) Editar Raridade");
+            System.out.println("0) Sair");
+            System.out.print(">> ");
+            op = Console.lerInt();
+
+            switch (op) {
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+
+                case 1:
+                    editarCartaNome(nome);
+                    break;
+
+                case 2:
+                    editarCartaCustoDeMana(nome);
+                    break;
+
+                case 3:
+                    editarCartaRaridade(nome);
+                    break;
+
+                default:
+                    System.out.println("Valor inválido, digite novamente");
+                    break;
+            }
+        }
+
+    }
+    
+
+    private static void editarCartaNome(String nome){
+        System.out.print("Digite o novo nome: ");
+        String nomeNovo = Console.lerString();
+        ListaCartas.editarNomeCarta(nome, nomeNovo);
+        System.out.println("Carta editada.");
+    }
+
+    private static void editarCartaCustoDeMana(String nome){
+        System.out.print("Digite o novo valor de mana: ");
+        int manaNova = Console.lerInt();
+        ListaCartas.editarCustoManaCarta(nome, manaNova);
+    }
+
+    private static void editarCartaRaridade(String nome){
+        System.out.print("Digite a nova raridade da carta: ");
+        String raridadeNova = Console.lerString();
+        ListaCartas.editarRaridadeCarta(nome, raridadeNova);
     }
 
     private static void excluirCarta() {
@@ -215,7 +418,7 @@ public class Sistema {
             System.out.println("3) Feitiço");
             System.out.println("4) Artefato");
             System.out.println("0) Cancelar");
-            System.out.println(">> ");
+            System.out.print(">> ");
             op = Console.lerInt();
 
             switch (op) {

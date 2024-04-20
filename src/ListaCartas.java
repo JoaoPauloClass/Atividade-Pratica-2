@@ -1,19 +1,3 @@
-/*
- * TO-DO:
- * # Métodos para gerenciar dados na lista, incluindo: 
- * 
- *XXXXXXXXXXXXXXcadastrar
- *XXXXXXXXXXXXXXlistar objetos específicos
- *XXXXXXXXXXXXXXbuscar
- *XXXXXXXXXXXXXXeditar dado
- *              excluir
- *              além de excluir todos os objetos da lista.
- * 
- *  Estas opções devem contemplar os diferentes tipos de objetos (ex: o sistema deve permitir cadastrar, buscar, excluir, editar e listar Professores, Coordenadores e Diretores) 
- */
-
-// nome genérico, pode trocar se quiser.
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,12 +51,11 @@ public class ListaCartas {
         return tempList;
     }
 
-    //buscar de outra forma além do nome, custo de mana e raridade?
     public static Carta buscarNomeCarta(String nome){
-        Carta tempCarta = new Carta(); //não tem nome igual, então coloquei um unico objeto nesse
+        Carta tempCarta = null;
 
         for (Carta carta : listaCartas) {
-            if (carta.getNome() == nome) {
+            if (carta.getNome().equals(nome)) {
                 tempCarta = carta;
             }
         }
@@ -98,7 +81,7 @@ public class ListaCartas {
         List<Carta> tempList = new ArrayList<>();
 
         for (Carta carta : listaCartas) {
-            if (carta.getRaridade() == raridade) {
+            if (carta.getRaridade().equalsIgnoreCase(raridade)) {
                 tempList.add(carta);
             }
         }
@@ -107,7 +90,6 @@ public class ListaCartas {
 
     }
 
-    //editar algo além de nome, raridade e custo de mana?
     public static void editarNomeCarta(String nomeAntigo, String nomeNovo){
         Carta carta = buscarNomeCarta(nomeAntigo); //apontar para o mesmo objeto
         carta.setNome(nomeNovo);
@@ -123,11 +105,6 @@ public class ListaCartas {
         carta.setRaridade(raridade);
     }
 
-    // public static void excluirCarta(String nome){
-    //     Carta carta = buscarNomeCarta(nome);
-    //     carta
-    // }
-
     public static boolean excluirCarta(String nome){
         for (Carta carta : listaCartas) {
             if (carta.getNome() == nome) {
@@ -141,8 +118,6 @@ public class ListaCartas {
 
     public static void excluirTodasCartas(){
         listaCartas.removeAll(listaCartas);
-        // for (Carta carta : listaCartas) {
-        // }
     }
 
 
