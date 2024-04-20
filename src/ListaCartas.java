@@ -128,7 +128,6 @@ public class ListaCartas {
     //     carta
     // }
 
-
     public static boolean excluirCarta(String nome){
         for (Carta carta : listaCartas) {
             if (carta.getNome() == nome) {
