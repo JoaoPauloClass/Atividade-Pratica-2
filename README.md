@@ -1,6 +1,6 @@
 ## Integrantes
  - Gustavo Luiz Gogola - RGM 33032319
- - João Paulo Class - RGM  
+ - João Paulo Class - RGM 4610286
 
 ## Ideia
 Superclasse Carta -> tipo, nome, custo de mana, raridade
