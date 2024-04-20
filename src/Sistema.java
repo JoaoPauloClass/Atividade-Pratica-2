@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.locks.AbstractQueuedLongSynchronizer.ConditionObject;
 
 
 public class Sistema {
@@ -76,11 +75,7 @@ public class Sistema {
                 case 3:
                     cadastrarArtefato();
                     break;
-
-                case 4:
-                    injetarCartas();
-                    System.out.println("Cartas injetadas...");
-                    break;    
+   
                 case 0:
                     System.out.println("Cancelando operação.");
                     break;
@@ -88,54 +83,12 @@ public class Sistema {
                     System.out.println("Opção inválida, tente novamente");
                     break;
             }
-            if (op >= 1 && op <= 4) {//***************************ARRUMAR pra 3 */
+            if (op >= 1 && op <= 3) {
                 break;
             }
         } while(op != 0);
     }
     
-    public static void injetarCartas(){
-        // Exemplos de criação de objetos usando o construtor de Artefato
-        Carta artefato1 = new Artefato("Artefato", "Amuleto do Poder", 3, "Raro", "Equipa um item a criatura", "Colar", 2, "Nenhum", 5);
-        Carta artefato2 = new Artefato("Artefato", "Espada do Destino", 5, "Épico", "Equipa um item a criatura", "Espada", 5 , "Causa dano adicional", 10);
-        Carta artefato3 = new Artefato("Artefato", "Anel da Proteção", 2, "Comum", "Equipa um item a criatura", "Anel", 3 , "Nenhum", 3);
-        Carta artefato4 = new Artefato("Artefato", "Cajado Arcano", 4, "Raro", "Equipa um item a criatura", "Cajado", 4, "Conjura feitiços gratuitamente", 8);
-        Carta artefato5 = new Artefato("Artefato", "Elmo do Guardião", 3, "Comum", "Equipa um item a criatura", "Elmo", 2, "Nenhum", 4);
-
-        // Exemplos de criação de objetos usando o construtor de Feitiço
-        Carta feitico1 = new Feitico("Feitiço", "Bola de Fogo", 4, "Raro", "Conjura um feitiço", "Fogo", "Causa 8 de dano");
-        Carta feitico2 = new Feitico("Feitiço", "Escudo de Proteção", 3, "Comum", "Conjura um feitiço", "Defesa", "Aumenta a defesa em 5");
-        Carta feitico3 = new Feitico("Feitiço", "Chuva de Flechas", 5, "Épico", "Conjura um feitiço", "Flecha", "Causa 12 de dano");
-        Carta feitico4 = new Feitico("Feitiço", "Curar Ferimentos", 2, "Comum", "Conjura um feitiço", "Cura", "Recupera 10 pontos de vida");
-        Carta feitico5 = new Feitico("Feitiço", "Encantar Arma", 4, "Raro", "Conjura um feitiço", "Encantamento", "Aumenta o ataque em 3");
-
-        // Exemplos de criação de objetos usando o construtor de Criatura
-        Criatura criatura1 = new Criatura("Criatura", "Dragão Flamejante", 7, "Lendário", "Invoca uma criatura para a batalha", 30, 12, 8);
-        Criatura criatura2 = new Criatura("Criatura", "Guerreiro Orc", 4, "Raro", "Invoca uma criatura para a batalha", 20, 8, 6);
-        Criatura criatura3 = new Criatura("Criatura", "Elfo Arqueiro", 3, "Comum", "Invoca uma criatura para a batalha", 15, 6, 4);
-        Criatura criatura4 = new Criatura("Criatura", "Gigante de Pedra", 6, "Épico", "Invoca uma criatura para a batalha", 25, 10, 10);
-        Criatura criatura5 = new Criatura("Criatura", "Mago Elemental", 5, "Raro", "Invoca uma criatura para a batalha", 18, 7, 5);
-
-        ListaCartas.adicionarCarta(artefato5);
-        ListaCartas.adicionarCarta(artefato4);
-        ListaCartas.adicionarCarta(artefato3);
-        ListaCartas.adicionarCarta(artefato2);
-        ListaCartas.adicionarCarta(artefato1);
-
-        ListaCartas.adicionarCarta(feitico1);
-        ListaCartas.adicionarCarta(feitico2);
-        ListaCartas.adicionarCarta(feitico3);
-        ListaCartas.adicionarCarta(feitico4);
-        ListaCartas.adicionarCarta(feitico5);
-
-        ListaCartas.adicionarCarta(criatura1);
-        ListaCartas.adicionarCarta(criatura2);
-        ListaCartas.adicionarCarta(criatura3);
-        ListaCartas.adicionarCarta(criatura4);
-        ListaCartas.adicionarCarta(criatura5);
-
-    } 
-
     private static void cadastrarCriatura() {
         String nome;
         int custoMana;
